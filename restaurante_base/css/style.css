@@ -1,0 +1,248 @@
+:root {
+  --color-primario: #24312b;
+  --color-secundario: #b85c38;
+  --color-acento: #d9a441;
+  --color-fondo: #f7f1e8;
+  --color-panel: #fffaf3;
+  --color-texto: #2b2926;
+  --color-muted: #756d63;
+  --color-borde: #e5d7c5;
+  --color-error: #b3261e;
+  --color-exito: #276749;
+  --color-reserva-vip: #fff1c7;
+  --sombra-suave: 0 18px 45px rgba(36, 49, 43, 0.12);
+
+  --fuente-titulo: 'Playfair Display', Georgia, serif;
+  --fuente-cuerpo: 'Lato', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-cuerpo);
+  background: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulo);
+  color: var(--color-primario);
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.encabezado {
+  color: #fff;
+  background:
+    linear-gradient(rgba(36, 49, 43, 0.82), rgba(36, 49, 43, 0.82)),
+    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80');
+  background-position: center;
+  background-size: cover;
+}
+
+.encabezado h1,
+.encabezado .descripcion-principal,
+.encabezado .etiqueta {
+  color: #fff;
+}
+
+.descripcion-principal {
+  max-width: 680px;
+  font-size: 1.15rem;
+}
+
+.etiqueta {
+  color: var(--color-secundario);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+
+.grupo-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.btn-filtro,
+.btn-principal {
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.btn-filtro {
+  padding: 0.65rem 1rem;
+  color: var(--color-primario);
+  background: #fff;
+  border: 1px solid var(--color-borde);
+}
+
+.btn-filtro:hover,
+.btn-filtro.activo {
+  color: #fff;
+  background: var(--color-secundario);
+  border-color: var(--color-secundario);
+  transform: translateY(-1px);
+}
+
+.btn-principal {
+  padding: 0.85rem 1.2rem;
+  color: #fff;
+  background: var(--color-primario);
+}
+
+.btn-principal:hover:not(:disabled) {
+  background: var(--color-secundario);
+  transform: translateY(-1px);
+}
+
+.btn-principal:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.card-plato {
+  height: 100%;
+  padding: 1.35rem;
+  background: var(--color-panel);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-suave);
+}
+
+.card-plato h3 {
+  margin-bottom: 0.7rem;
+  font-size: 1.45rem;
+}
+
+.card-plato p {
+  color: var(--color-muted);
+}
+
+.precio-plato {
+  color: var(--color-secundario);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.categoria-plato {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.28rem 0.65rem;
+  color: var(--color-primario);
+  background: #f1dfc3;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.panel-formulario,
+.panel-reservas {
+  height: 100%;
+  padding: 1.5rem;
+  background: var(--color-panel);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-suave);
+}
+
+.form-label {
+  font-weight: 700;
+}
+
+.form-control,
+.form-select {
+  border-color: var(--color-borde);
+  border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 0.2rem rgba(184, 92, 56, 0.18);
+}
+
+.error-campo {
+  min-height: 1.25rem;
+  margin-top: 0.3rem;
+  color: var(--color-error);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.mensaje-reserva {
+  min-height: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-exito);
+  font-weight: 700;
+}
+
+.tabla-reservas {
+  min-width: 720px;
+  margin-bottom: 1.2rem;
+}
+
+.tabla-reservas thead th {
+  color: #fff;
+  background: var(--color-primario);
+}
+
+.fila-reserva td {
+  border-color: var(--color-borde);
+}
+
+.fila-reserva.grupo-grande td {
+  background: var(--color-reserva-vip);
+  font-weight: 700;
+}
+
+.resumen-reservas {
+  padding: 1rem;
+  background: #eef4ec;
+  border-left: 5px solid var(--color-primario);
+  border-radius: 8px;
+}
+
+.resumen-reservas p {
+  margin: 0 0 0.45rem;
+}
+
+.resumen-reservas p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .encabezado {
+    text-align: center;
+  }
+
+  .grupo-filtros {
+    width: 100%;
+  }
+
+  .btn-filtro {
+    flex: 1 1 calc(50% - 0.6rem);
+  }
+
+  .panel-formulario,
+  .panel-reservas {
+    padding: 1rem;
+  }
+}

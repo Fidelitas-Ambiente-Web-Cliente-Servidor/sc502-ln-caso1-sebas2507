@@ -70,7 +70,7 @@ function renderMenu() {
     ? menu
     : menu.filter((plato) => plato.categoria === categoriaActual);
 
-  // Recorre los datos del array obligatorio y construye cada card desde JavaScript.
+  //recorrido del array
   platillosFiltrados.forEach((plato) => {
     const columna = document.createElement('div');
     columna.className = 'col-md-6 col-xl-4';
@@ -179,11 +179,26 @@ function agregarReserva() {
   }
 
   const campos = obtenerCamposFormulario();
+  const fechaSeleccionada = campos.fecha.value;
+  const horaSeleccionada = campos.hora.value;
+  const mensajeReserva = document.getElementById('mensaje-reserva');
+
+  // Evita registrar dos reservas en el mismo bloque de fecha y hora.
+  const horarioOcupado = reservas.some((reserva) => {
+    return reserva.fecha === fechaSeleccionada && reserva.hora === horaSeleccionada;
+  });
+
+  if (horarioOcupado) {
+    mensajeReserva.textContent = 'A esa hora no hay espacio disponible. Seleccione otra fecha u hora.';
+    mensajeReserva.classList.add('mensaje-error');
+    return;
+  }
+
   const nuevaReserva = {
     nombre: campos.nombre.value.trim(),
     correo: campos.correo.value.trim(),
-    fecha: campos.fecha.value,
-    hora: campos.hora.value,
+    fecha: fechaSeleccionada,
+    hora: horaSeleccionada,
     personas: Number(campos.personas.value),
     comentarios: campos.comentarios.value.trim(),
   };
@@ -207,7 +222,8 @@ function agregarReserva() {
   );
 
   document.getElementById('tabla-reservas').appendChild(fila);
-  document.getElementById('mensaje-reserva').textContent = 'Reserva registrada correctamente.';
+  mensajeReserva.textContent = 'Reserva registrada correctamente.';
+  mensajeReserva.classList.remove('mensaje-error');
 
   campos.nombre.value = '';
   campos.correo.value = '';

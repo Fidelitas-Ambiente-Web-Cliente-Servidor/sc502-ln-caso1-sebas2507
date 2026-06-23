@@ -194,6 +194,10 @@ h2 {
   font-weight: 700;
 }
 
+.mensaje-reserva.mensaje-error {
+  color: var(--color-error);
+}
+
 .tabla-reservas {
   min-width: 720px;
   margin-bottom: 1.2rem;
